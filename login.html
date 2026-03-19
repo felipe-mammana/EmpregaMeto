@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | EmpregaMeto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.php" class="logo">
+        <div class="logo-icon"><img src="img/icon.png" alt="Logo EmpregaMeto"></div>
+        <div class="logo-text">
+          <span class="logo-name">EmpregaMeto</span>
+          <span class="logo-sub">Universidade Metodista de SP</span>
+        </div>
+      </a>
+      <a href="index.php" class="nav-cta">Voltar</a>
+    </div>
+  </nav>
+
+  <section class="login-page">
+    <div class="container">
+      <div class="login-layout">
+        <div class="login-card">
+          <div class="section-header center">
+            <span class="section-label">Acesso do aluno</span>
+            <div class="yellow-line"></div>
+            <h1 class="section-title display">Entrar na plataforma</h1>
+            <p class="section-desc">Use o e-mail cadastrado para acessar seu painel do EmpregaMeto.</p>
+          </div>
+
+          <form>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" placeholder="seuemail@exemplo.com" required>
+              </div>
+              <div class="form-group">
+                <label>Senha</label>
+                <input type="password" placeholder="Sua senha" required>
+              </div>
+            </div>
+            <div class="login-actions">
+              <button type="submit" class="btn-primary">Entrar</button>
+              <a href="index.php#inscricao" class="login-link">Esqueci minha senha</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="login-info">
+          <div class="login-info-card">
+            <div class="login-info-ico">✦</div>
+            <div>
+              <h3>Seu acesso está a caminho</h3>
+              <p>Após a análise da inscrição, o acesso chega no e-mail cadastrado com instruções completas.</p>
+            </div>
+          </div>
+          <div class="login-info-card">
+            <div class="login-info-ico">📝</div>
+            <div>
+              <h3>Atualize seus dados</h3>
+              <p>Se mudou de telefone ou e-mail, faça uma nova inscrição para manter seu cadastro atualizado.</p>
+            </div>
+          </div>
+          <div class="login-highlight">
+            <span class="section-label">Dica rápida</span>
+            <h3 class="display">Verifique o spam</h3>
+            <p>Em alguns casos o e-mail de acesso pode cair na caixa de spam. Salve nosso contato para não perder.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
