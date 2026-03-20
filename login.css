@@ -102,3 +102,54 @@
     grid-template-columns: 1fr;
   }
 }
+/* ===== POPUP ===== */
+  .popup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 36, 99, 0.35);
+    backdrop-filter: blur(6px);
+    z-index: 10000;
+    padding: 1.5rem;
+  }
+  .popup.is-active { display: flex; }
+  .popup-card {
+    background: var(--branco);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--sombra-hover);
+    width: min(520px, 100%);
+  }
+  .popup-card.is-error { border: 1px solid rgba(239, 68, 68, 0.2); }
+  .popup-card.is-success { border: 1px solid rgba(34, 197, 94, 0.2); }
+  .popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  #popup-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--texto-escuro);
+  }
+  .popup-message {
+    color: var(--cinza-texto);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .popup-close {
+    border: none;
+    background: transparent;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--cinza-texto);
+  }
+  .popup-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+  }

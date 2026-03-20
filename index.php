@@ -391,7 +391,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/cone.php";
             </div>
             <div class="form-group">
               <label>Área de Interesse *</label>
-              <select name = "curso" id="area" required>
+              <select name = "curso" id= "curso" required>
                 <option value="">Selecione...</option>
                 <option>Administração e Gestão</option>
                 <option>Tecnologia da Informação</option>

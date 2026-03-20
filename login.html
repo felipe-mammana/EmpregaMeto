@@ -34,20 +34,23 @@
             <p class="section-desc">Use o e-mail cadastrado para acessar seu painel do EmpregaMeto.</p>
           </div>
 
-          <form>
+          <form id="login-form" class="login-form" method="POST" action="login.php">
             <div class="form-grid">
               <div class="form-group">
                 <label>E-mail</label>
-                <input type="email" placeholder="seuemail@exemplo.com" required>
+                <input type="email" name="email" placeholder="seuemail@exemplo.com" required>
               </div>
               <div class="form-group">
                 <label>Senha</label>
-                <input type="password" placeholder="Sua senha" required>
+                <input type="password" name="senha" placeholder="Sua senha" required>
               </div>
             </div>
             <div class="login-actions">
-              <button type="submit" class="btn-primary">Entrar</button>
+              <button id="btn-submit" type="submit" class="btn-primary">Entrar</button>
               <a href="index.php#inscricao" class="login-link">Esqueci minha senha</a>
+            </div>
+            <div id="loading-overlay" class="loading-overlay" aria-hidden="true">
+              <span class="loading-circle" aria-label="Carregando"></span>
             </div>
           </form>
         </div>
@@ -76,5 +79,20 @@
       </div>
     </div>
   </section>
+
+  <div id="popup" class="popup" aria-hidden="true">
+    <div class="popup-card" role="alertdialog" aria-modal="true" aria-labelledby="popup-title">
+      <div class="popup-header">
+        <span id="popup-title">Atenção</span>
+        <button id="popup-close" class="popup-close" type="button" aria-label="Fechar">X</button>
+      </div>
+      <p id="popup-message" class="popup-message"></p>
+      <div class="popup-actions">
+        <button id="popup-ok" class="btn-primary" type="button">Ok</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="login.js?v=1"></script>
 </body>
 </html>
