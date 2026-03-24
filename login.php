@@ -33,20 +33,24 @@ if (!password_verify($senha, $result['senha'])) {
     responder(false, 'E-mail ou senha incorretos.', 401);
 }
 
-$_SESSION['user'] = [
-    'id' => $result['id'],
-    'nome' => $result['nome'],
-    'email' => $email,
-    'tipo' => $result['tipo'],
-    'status' => $result['status'],
+if($result['status'] === 'ativo') {
+    $_SESSION['user'] = [
+        'id' => $result['id'],
+        'nome' => $result['nome'],
+        'email' => $email,
+        'tipo' => $result['tipo'],
+        'status' => $result['status'],
     'RA' => $result['RA'],
     'telefone' => $result['telefone'],
     'idade' => $result['idade'],
     'curso' => $result['curso']
 ];
 
+
 responder(true, 'Login realizado com sucesso.', 200, [
   'tipo' => $result['tipo']
 ]);
-
+} else {
+    responder(false, 'Sua conta está inativa. Por favor, entre em contato com o suporte.', 403);    
+}
 ?>
