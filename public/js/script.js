@@ -1,8 +1,8 @@
-﻿function ativarloading() {
+function ativarloading() {
     const btn = document.getElementById('btn-submit');
     const overlay = document.getElementById('loading-overlay');
 
-    if (btn) btn.disabled = true;
+    btn.disabled = true;
     if (overlay) {
         overlay.classList.add('is-active');
         overlay.setAttribute('aria-hidden', 'false');
@@ -13,7 +13,7 @@ function desativarloading() {
     const btn = document.getElementById('btn-submit');
     const overlay = document.getElementById('loading-overlay');
 
-    if (btn) btn.disabled = false;
+    btn.disabled = false;
     if (overlay) {
         overlay.classList.remove('is-active');
         overlay.setAttribute('aria-hidden', 'true');
@@ -54,55 +54,57 @@ function hidePopup() {
     }
 }
 
-function validarLogin(event) {
+function validarform(event){
+
     event.preventDefault();
-
-    const form = document.getElementById('login-form');
-    if (!form) return;
-
-    const email = (form.querySelector('[name="email"]')?.value || '').trim();
-    const senha = (form.querySelector('[name="senha"]')?.value || '').trim();
+    const form = event.target;
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const idade = document.getElementById('idade').value;
+    const curso = document.getElementById('curso').value;
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const regexTelefone = /^\(\d{2}\) \d{5}-\d{4}$/;
 
-    if (!email || !senha) {
-        showPopup('Por favor, preencha e-mail e senha.', 'error');
-        return;
+    if(nome === '' || email === '' || telefone === '' || idade === '' || curso === ''){
+        showPopup('Por favor, preencha todos os campos obrigatórios.', 'error');
+        return false;
     }
 
-    if (!regexEmail.test(email)) {
-        showPopup('Por favor, insira um e-mail válido.', 'error');
-        return;
+    if(!regexEmail.test(email)){
+        showPopup('Por favor, insira um email válido.', 'error');
+        return false;
+    }
+
+    if(!regexTelefone.test(telefone)){
+        showPopup('Por favor, insira um telefone válido.', 'error');
+        return false;
     }
 
     ativarloading();
 
-    fetch('login.php', {
+    fetch('/meto/api/routes/inscrever.php', {
         method: 'POST',
         body: new FormData(form)
     })
-        .then(async (res) => {
-            const data = await res.json().catch(() => ({}));
-            if (!res.ok || !data.ok) {
-                throw new Error(data.message || 'Falha no login. Verifique suas credenciais.');
-            }
-            if (data.tipo === 'admin') {
-                window.location.href = '/meto/admin.php';
-            } else {
-                window.location.href = '/meto/usuario.php';
-            }
-        })
-        .catch((err) => {
-            showPopup(err.message, 'error');
-        })
-        .finally(() => {
-            desativarloading();
-        });
+    .then(async (res) => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.ok) {
+            throw new Error(data.message || 'Não foi possível concluir sua inscrição.');
+        }
+        window.location.href = '/meto/public/html/sucesso.html';
+    })
+    .catch((err) => {
+        showPopup(err.message, 'error');
+    })
+    .finally(() => {
+        desativarloading();
+    });
+
+    return false;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('login-form');
-    if (form) form.addEventListener('submit', validarLogin);
-
     const closeBtn = document.getElementById('popup-close');
     const okBtn = document.getElementById('popup-ok');
     const popup = document.getElementById('popup');
@@ -115,3 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+    

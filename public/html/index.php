@@ -2,7 +2,7 @@
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 header('Content-Type: text/html; charset=utf-8');
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/cone.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/config/cone.php";
 
 
 
@@ -22,14 +22,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/cone.php";
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#hero" class="logo">
-      <div class="logo-icon"><img src="img/icon.png" alt="Logo EmpregaMeto"></div>
+      <div class="logo-icon"><img src="../img/icon.png" alt="Logo EmpregaMeto"></div>
       <div class="logo-text">
         <span class="logo-name">EmpregaMeto</span>
         <span class="logo-sub">Universidade Metodista de SP</span>
@@ -361,7 +361,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/cone.php";
       </div>
      
       <!--<div class="form-card reveal">!-->
-        <form method ="post" action ="inscrever.php" class="form-card reveal" onsubmit="return validarform(event)">
+        <form method ="post" class="form-card reveal" onsubmit="return validarform(event)">
         <h3>Faça sua Inscrição</h3>
         <p>Preencha o formulário e entraremos em contato em até 48 horas.</p>
         <div id="form-fields">
@@ -507,7 +507,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/cone.php";
   </div>
 </body>
 
-<script src="script.js?v=2"></script>
+<script src="../js/script.js?v=2"></script>
 <!-- Incluir JQuery e JQuery Mask -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>

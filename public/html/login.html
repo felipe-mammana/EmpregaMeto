@@ -7,13 +7,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
   <nav id="navbar">
     <div class="nav-inner">
       <a href="index.php" class="logo">
-        <div class="logo-icon"><img src="img/icon.png" alt="Logo EmpregaMeto"></div>
+        <div class="logo-icon"><img src="../img/icon.png" alt="Logo EmpregaMeto"></div>
         <div class="logo-text">
           <span class="logo-name">EmpregaMeto</span>
           <span class="logo-sub">Universidade Metodista de SP</span>
@@ -34,7 +34,7 @@
             <p class="section-desc">Use o e-mail cadastrado para acessar seu painel do EmpregaMeto.</p>
           </div>
 
-          <form id="login-form" class="login-form" method="POST" action="login.php">
+          <form id="login-form" class="login-form" method="POST" onsubmit="return validarLogin(event)">
             <div class="form-grid">
               <div class="form-group">
                 <label>E-mail</label>
@@ -93,6 +93,6 @@
     </div>
   </div>
 
-  <script src="login.js?v=1"></script>
+  <script src="../js/login.js?v=1"></script>
 </body>
 </html>
