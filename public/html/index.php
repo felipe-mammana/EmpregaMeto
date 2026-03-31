@@ -2,7 +2,7 @@
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 header('Content-Type: text/html; charset=utf-8');
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/config/cone.php";
+require_once __DIR__ . '/../../api/config/cone.php';
 
 
 
