@@ -74,6 +74,4 @@ responder(true, 'Login realizado com sucesso.', 200, [
 ]);
     }
 }
-
-AuthController::login();
 ?>

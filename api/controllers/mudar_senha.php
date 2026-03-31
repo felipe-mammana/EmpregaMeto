@@ -114,4 +114,3 @@ $senha
 
 }
 
-AuthSenha::mudar_senha();
