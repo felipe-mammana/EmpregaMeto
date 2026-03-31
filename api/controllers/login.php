@@ -74,4 +74,8 @@ responder(true, 'Login realizado com sucesso.', 200, [
 ]);
     }
 }
+
+if (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'])) {
+    AuthController::login();
+}
 ?>

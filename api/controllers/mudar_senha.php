@@ -87,14 +87,14 @@ if ($resultado) {
 
 } else {
 
-    http_response_code(500);
+        http_response_code(500);
 
-    echo json_encode([
-        "ok" => false,
-        "message" => "Erro ao atualizar senha"
-    ]);
+        echo json_encode([
+            "ok" => false,
+            "message" => "Erro ao atualizar senha"
+        ]);
 
-}
+    }
 
 }
 
@@ -102,15 +102,18 @@ if ($resultado) {
 
 private static function senhaValida($senha) {
 
-return preg_match(
+    return preg_match(
 
-"/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/",
+        "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/",
 
-$senha
+        $senha
 
-);
-
-}
+    );
 
 }
 
+}
+
+if (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'])) {
+    AuthSenha::mudar_senha();
+}
