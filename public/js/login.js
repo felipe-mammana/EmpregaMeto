@@ -76,7 +76,7 @@ function validarLogin(event) {
 
     ativarloading();
 
-    fetch('/meto/api/controllers/login.php', {
+    fetch('/empregameto/api/controllers/login.php', {
         method: 'POST',
         body: new FormData(form)
     })
@@ -87,15 +87,15 @@ function validarLogin(event) {
             }
             if(data.primeiro_login == 1){
 
-                window.location.href = '/meto/public/html/primeiro_login.php';  
+                window.location.href = '/empregameto/public/html/primeiro_login.php';  
 
                 return;
             }
 
             if (data.tipo === 'admin') {
-                window.location.href = '/meto/admin.php';
+                window.location.href = '/empregameto/admin.php';
             } else {
-                window.location.href = '/meto/usuario.php';
+                window.location.href = '/empregameto/usuario.php';
             }
         })
         .catch((err) => {
