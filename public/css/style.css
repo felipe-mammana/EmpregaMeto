@@ -42,8 +42,9 @@
   /* ===== NAVIGATION ===== */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.98);
+    /* disable backdrop-filter to avoid expensive repaints */
+    backdrop-filter: none;
     border-bottom: 1px solid var(--cinza-medio);
     transition: var(--transition);
   }
@@ -90,6 +91,9 @@
   }
   .hero-bg-shapes {
     position: absolute; inset: 0; pointer-events: none;
+    /* promote to its own layer to reduce repaints while scrolling */
+    will-change: transform;
+    transform: translateZ(0);
   }
   .hero-bg-shapes::before {
     content: ''; position: absolute;
@@ -108,6 +112,7 @@
     background-image: linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px);
     background-size: 60px 60px;
+    transform: translateZ(0);
   }
   .hero-inner {
     max-width: 1200px; margin: 0 auto; padding: 5rem 2rem;
@@ -120,7 +125,7 @@
     border-radius: 50px; padding: 6px 16px; margin-bottom: 1.5rem;
   }
   .hero-badge span { color: var(--amarelo); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
-  .hero-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amarelo); animation: pulse 2s infinite; }
+  .hero-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amarelo); animation: pulse 2s infinite; will-change: transform, opacity; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.2)} }
   .hero-title {
     font-family: 'DM Serif Display', serif;
@@ -158,7 +163,9 @@
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 28px; padding: 2.5rem;
-    backdrop-filter: blur(12px);
+    /* disable backdrop-filter to reduce painting cost */
+    backdrop-filter: none;
+    transform: translateZ(0);
   }
   .hero-ill-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
   .hero-ill-avatar {
@@ -186,9 +193,29 @@
   .step-badge.progress { background: rgba(245,184,0,0.2); color: var(--amarelo); }
   .floating-card {
     position: absolute; background: var(--branco); border-radius: 14px;
-    padding: 12px 16px; box-shadow: 0 8px 32px rgba(10,36,99,0.25);
-    display: flex; align-items: center; gap: 10px; animation: float 3s ease-in-out infinite;
+    padding: 12px 16px; /* lighter shadow to reduce paint cost */
+    box-shadow: 0 4px 12px rgba(10,36,99,0.18);
+    display: flex; align-items: center; gap: 10px; animation: float 6s ease-in-out infinite;
+    will-change: transform;
+    transform: translateZ(0);
   }
+
+/* Firefox-specific fallback: disable expensive effects known to cause jank */
+.is-firefox nav,
+.is-firefox .hero-illustration {
+  backdrop-filter: none !important;
+}
+.is-firefox .floating-card,
+.is-firefox .hero-dot {
+  animation: none !important;
+  box-shadow: 0 4px 10px rgba(10,36,99,0.12) !important;
+}
+.is-firefox .hero-bg-shapes,
+.is-firefox .hero-grid {
+  will-change: auto !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
   .floating-card.card1 { top: 10%; left: -20px; animation-delay: 0s; }
   .floating-card.card2 { bottom: 15%; right: -10px; animation-delay: 1.5s; }
   @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
@@ -473,7 +500,7 @@
   .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
   .footer-logo-icon {
     width: 44px; height: 44px; border-radius: 12px;
-    background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     font-family: 'DM Serif Display', serif; color: var(--amarelo); font-size: 1.2rem;
   }
   .footer-logo-name { font-weight: 800; font-size: 1.1rem; color: var(--branco); }
@@ -534,6 +561,17 @@
         .materiais-grid { grid-template-columns: 1fr; }
         .videos-grid { grid-template-columns: 1fr; }
     }
+
+  /* Respect user preference for reduced motion and provide safe defaults */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    .floating-card, .hero-dot, .hero-bg-shapes, .hero-grid { animation: none !important; }
+  }
 
 
 .loading-overlay {

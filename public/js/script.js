@@ -105,6 +105,12 @@ function validarform(event){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // detect Firefox and add class for CSS fallback
+    try {
+        if (navigator.userAgent && navigator.userAgent.toLowerCase().includes('firefox')) {
+            document.documentElement.classList.add('is-firefox');
+        }
+    } catch (e) {}
     const closeBtn = document.getElementById('popup-close');
     const okBtn = document.getElementById('popup-ok');
     const popup = document.getElementById('popup');
