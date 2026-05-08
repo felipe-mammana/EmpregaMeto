@@ -2,7 +2,7 @@
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 header('Content-Type: text/html; charset=utf-8');
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/config/cone.php";
+require_once __DIR__ . '/../../api/config/cone.php';
 
 
 
@@ -359,7 +359,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/config/cone.php";
           <div class="perk">Conexão com oportunidades de emprego</div>
         </div>
       </div>
-     
       <!--<div class="form-card reveal">!-->
         <form method ="post" class="form-card reveal" onsubmit="return validarform(event)">
         <h3>Faça sua Inscrição</h3>
@@ -450,7 +449,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/config/cone.php";
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <div class="footer-logo-icon">EM</div>
+          <div class="footer-logo-icon"><img src="../img/icon.png" alt="Logo EmpregaMeto"></div>
           <div>
             <div class="footer-logo-name">EmpregaMeto</div>
             <div class="footer-logo-sub">Universidade Metodista de SP</div>

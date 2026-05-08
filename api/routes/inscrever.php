@@ -1,5 +1,5 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/controllers/inscrever.php";
+require_once __DIR__ . '/../controllers/inscrever.php';
 
 AuthRegister::registrar();

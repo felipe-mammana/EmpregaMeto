@@ -83,7 +83,7 @@ function validarform(event){
 
     ativarloading();
 
-    fetch('/meto/api/routes/inscrever.php', {
+    fetch('/empregameto/api/routes/inscrever.php', {
         method: 'POST',
         body: new FormData(form)
     })
@@ -92,7 +92,7 @@ function validarform(event){
         if (!res.ok || !data.ok) {
             throw new Error(data.message || 'Não foi possível concluir sua inscrição.');
         }
-        window.location.href = '/meto/public/html/sucesso.html';
+        window.location.href = '/empregameto/public/html/sucesso.html';
     })
     .catch((err) => {
         showPopup(err.message, 'error');
@@ -105,6 +105,12 @@ function validarform(event){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // detect Firefox and add class for CSS fallback
+    try {
+        if (navigator.userAgent && navigator.userAgent.toLowerCase().includes('firefox')) {
+            document.documentElement.classList.add('is-firefox');
+        }
+    } catch (e) {}
     const closeBtn = document.getElementById('popup-close');
     const okBtn = document.getElementById('popup-ok');
     const popup = document.getElementById('popup');

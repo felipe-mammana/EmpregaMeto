@@ -118,7 +118,7 @@ document
     const form = e.target;
 
     const response = await fetch(
-        "/meto/api/controllers/mudar_senha.php",
+        "/empregameto/api/controllers/mudar_senha.php",
         {
             method: "POST",
             body: new FormData(form)
@@ -129,7 +129,7 @@ document
 
     if (data.ok) {
 
-        redirectTo = "/meto/public/html/login.html";
+        redirectTo = "/empregameto/public/html/login.html";
         showPopup("Senha alterada com sucesso!", "success");
 
 

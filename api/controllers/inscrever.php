@@ -1,7 +1,7 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/config/cone.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/models/inscrever.php";
+require_once __DIR__ . '/../config/cone.php';
+require_once __DIR__ . '/../models/inscrever.php';
 
 class AuthRegister {
 

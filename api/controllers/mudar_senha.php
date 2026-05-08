@@ -1,7 +1,7 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/config/cone.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/models/mudar_senha.php";
+require_once __DIR__ . '/../config/cone.php';
+require_once __DIR__ . '/../models/mudar_senha.php';
 
 class AuthSenha {
 
