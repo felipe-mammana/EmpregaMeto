@@ -1,0 +1,36 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Local IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+
+# PHP dependencies and build outputs
+vendor/
+
+# Node dependencies and build outputs
+node_modules/
+dist/
+build/
+
+# Test/cache artifacts
+.phpunit.result.cache
+.pytest_cache/
+__pycache__/
+coverage/

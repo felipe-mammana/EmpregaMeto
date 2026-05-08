@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/config/cone.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/models/User.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/meto/api/models/user.php";
 class AuthController{
 
     public static function login(){

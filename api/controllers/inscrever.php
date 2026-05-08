@@ -18,7 +18,7 @@ $telefone = trim($_POST['telefone'] ?? '');
 $idade    = (int)($_POST['idade'] ?? 0);
 $curso    = trim($_POST['curso'] ?? '');
 
-$senha  = "Meto@2026";
+$senha  = getenv('METO_INITIAL_PASSWORD') ?: '';
 $tipo   = "user";
 $status = "pendente";
 
@@ -43,6 +43,16 @@ $telefone
         false,
         'Telefone inválido',
         400
+    );
+
+}
+
+if ($senha === '') {
+
+    self::responder(
+        false,
+        'Senha inicial não configurada.',
+        500
     );
 
 }
